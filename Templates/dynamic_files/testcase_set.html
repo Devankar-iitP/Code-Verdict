@@ -1,0 +1,64 @@
+{% extends 'dynamic_files/base.html' %} {% block body %}
+<span></span>
+{% include "dynamic_files/navbar.html" %}
+
+<div
+	class="luffy"
+	style="
+		background-image: linear-gradient(120deg, #89e7fe 0%, #66ffa8 100%);
+		margin-top: 5px;
+		height: 1500px;
+	">
+	<form method="post">
+		{% csrf_token %}
+		<!-- CSRF token for security -->
+
+		<div class="ques_main2">
+			{% include "dynamic_files/alert.html" %}
+			<h3
+				style="
+					text-align: center;
+					font-family: Verdana, Geneva, Tahoma, sans-serif;
+				">
+				CREATE TESTCASES
+			</h3>
+
+			<span class="detail">Problem Name</span>
+			<input
+				class="form-control inp"
+				type="text"
+				name="name"
+				placeholder="Enter Problem Name"
+				style="width: 50%; margin-left: 0%" />
+
+			<div class="form-row" style="margin-top: 3%">
+				<div class="form-group col-md-6">
+					<span class="detail">Input</span>
+					<textarea
+						style="height: 300px"
+						name="inputs"
+						class="form-control inp"
+						placeholder="You can expand the area from bottom-right corner of this box."></textarea>
+				</div>
+
+				<div class="form-group col-md-6">
+					<span class="detail">Output</span>
+					<textarea
+						style="height: 300px"
+						name="outputs"
+						class="form-control inp"
+						placeholder="You can expand the area from bottom-right corner of this box."></textarea>
+				</div>
+			</div>
+
+			<button
+				type="submit"
+				class="btn btn-success"
+				style="margin-left: 42%; width: 100px; margin-top: 5%">
+				Create
+			</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

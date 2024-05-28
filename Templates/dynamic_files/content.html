@@ -1,0 +1,70 @@
+{% if user.is_authenticated %}
+
+<h1 class="display-5">Namastey, {{name}} !</h1>
+<p
+	class="lead"
+	style="
+		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+			'Lucida Sans', Arial, sans-serif;
+	">
+	Welcome to Code Verdict! We are thrilled to have you on board. Your support
+	helps us continue to bring you more of the content and features you love. Now,
+	you can also upskill your DSA skills and sharpen your competitive programming
+	instincts.
+</p>
+
+{% else %}
+
+<h1 class="display-5">Welcome, Coder!</h1>
+<p
+	class="lead"
+	style="
+		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+			'Lucida Sans', Arial, sans-serif;
+	">
+	CodeVerdict is an online judge where you can submit your code and receive a
+	verdict based on the correctness. You can upskill your DSA skills and sharpen
+	your competitive programming instincts.
+</p>
+{% endif %}
+
+<p class="lead">
+	<strong> &#10024 Key features</strong>
+</p>
+
+<ul>
+	<li>
+		Multi-language support: <kbd>C++</kbd> <kbd>Java</kbd> <kbd>Python</kbd>
+	</li>
+	<li>Problem statement with difficulty</li>
+	<li>Security with custom API for isolation</li>
+	<li>Number of attempts with date and time</li>
+	<li>Shows past submissions</li>
+</ul>
+<br />
+
+{% if user.is_authenticated %}
+
+<h5>So what are you waiting for ? Practice with us now and become a pro coder. &#128526</h5>
+<h5><strong> Happy Coding ! </strong></h5>
+<a 
+	class="btn btn-outline-primary btn-lg" 
+	href="/dash" 
+	role="button" 
+	style="margin-top: 20px"
+	>Go to Dashboard !</a
+>
+
+{% else %}
+
+<h5>But don't worry! We have got you covered. Practice with us now.</h5>
+<a
+	class="btn btn-primary btn-lg"
+	href="/auth/registration"
+	role="button"
+	style="margin-top: 20px"
+	>Register now !</a
+>
+<p>Already registered ? Click here to <a href="/auth/login">Log-in</a></p>
+
+{% endif %}

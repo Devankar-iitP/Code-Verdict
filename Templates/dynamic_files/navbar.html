@@ -1,0 +1,109 @@
+{% if user.is_authenticated %}
+
+<nav
+	class="navbar main navbar-light"
+	style="
+		position: -webkit-sticky;
+		background-image: linear-gradient(170deg, #94e2f6 0%, #feffe3 100%);
+	">
+	<img src="/static/Images/logo.png" width="45px" height="45px" />
+	<a href="/home" class="logo"> CodeVerdict </a>
+
+	<ul class="nav nav-pills">
+		<li class="nav-item">
+			<a
+				class="nav-link {% if request.path == '/home/' %} active {% endif %}"
+				aria-current="page"
+				href="/home"
+				><strong>Home</strong></a
+			>
+		</li>
+
+		<li class="nav-item">
+			<a
+				class="nav-link {% if request.path == '/dash/' %} active {% endif %}"
+				href="/dash"
+				><strong>Dashboard</strong></a
+			>
+		</li>
+	</ul>
+
+	{% if request.user.groups.all.0.name == 'Employee' %}
+	<div class="dropdown" style="height: 90%; margin-left: 15px">
+		<button
+			class="btn btn-success dropdown-toggle"
+			id="dropdownMenuButton"
+			data-toggle="dropdown"
+			aria-haspopup="true"
+			aria-expanded="false">
+			Create
+		</button>
+
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			<a class="dropdown-item" href="/ques">Create Question</a>
+			<a class="dropdown-item" href="/ques/test">Create Testcase</a>
+		</div>
+	</div>
+	{% endif %}
+
+	<!-- Logout button -->
+	<button
+		type="button"
+		style="margin-left: 10px"
+		class="btn btn-outline-danger"
+		data-toggle="modal"
+		data-target="#exampleModal">
+		<strong>Logout</strong>
+	</button>
+
+	<div
+		class="modal fade"
+		id="exampleModal"
+		tabindex="-1"
+		role="dialog"
+		aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Warning !!</h5>
+					<button
+						type="button"
+						class="close"
+						data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					Are you sure? Do you really want to logout ?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">
+						Close
+					</button>
+					<a role="button" href="/auth/logout" class="btn btn-primary">Yes</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+
+{% else %}
+
+<nav
+	class="navbar main navbar-dark"
+	style="
+		position: -webkit-sticky;
+		background-image: linear-gradient(170deg, #94e2f6 0%, #feffe3 100%);
+	">
+	<img src="/static/Images/logo.png" width="45px" height="45px" />
+	<a href="" class="logo"> CodeVerdict </a>
+
+	<a href="/auth/login" class="btn btn-outline-primary" role="button"
+		><strong>Sign-in</strong></a
+	>
+</nav>
+
+{% endif %}

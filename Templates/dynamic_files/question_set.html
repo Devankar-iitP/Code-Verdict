@@ -1,0 +1,84 @@
+{% extends 'dynamic_files/base.html' %} {% block body %}
+<span></span>
+{% include "dynamic_files/navbar.html" %}
+
+<div
+	class="luffy"
+	style="
+		background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+		margin-top: 5px;
+		height: 1500px;
+	">
+	<form method="post">
+		{% csrf_token %}
+		<!-- CSRF token for security -->
+
+		<div class="ques_main2">
+			<h3
+				style="
+					text-align: center;
+					font-family: Verdana, Geneva, Tahoma, sans-serif;
+				">
+				CREATE NEW PROBLEM
+			</h3>
+
+			{% include "dynamic_files/alert.html" %}
+			<span class="detail">Problem Name</span>
+			<input
+				class="form-control inp"
+				type="text"
+				name="name"
+				placeholder="Enter Problem Name"
+				style="width: 50%; margin-left: 0%" />
+
+			<span class="detail">Difficulty</span>
+			<span style="margin-right: 5px">Easy </span>
+			<input
+				type="radio"
+				name="difficulty"
+				style="margin-right: 10%"
+				value="1"
+				checked />
+
+			<span style="margin-right: 5px">Medium </span>
+			<input
+				type="radio"
+				name="difficulty"
+				style="margin-right: 10%"
+				value="2" />
+
+			<span style="margin-right: 5px">Hard </span>
+			<input type="radio" name="difficulty" value="3" />
+
+			<span class="detail">Description</span>
+			<textarea
+				name="desc"
+				class="form-control inp"
+				style="width: 100%; height: 300px"
+				placeholder="You can expand the area from bottom-right corner of this box."></textarea>
+
+			<span class="detail">Input Format</span>
+			<textarea
+				name="in_format"
+				class="form-control inp"
+				style="width: 100%; height: 100px"
+				placeholder="You can expand the area from bottom-right corner of this box."></textarea>
+
+			<span class="detail">Output Format</span>
+			<textarea
+				name="out_format"
+				class="form-control inp"
+				style="width: 100%; height: 100px"
+				placeholder="You can expand the area from bottom-right corner of this box."></textarea>
+
+			<button
+				type="submit"
+				class="btn btn-success"
+				style="margin-left: 42%; width: 100px; margin-top: 3%">
+				Create
+			</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

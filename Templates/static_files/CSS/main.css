@@ -1,0 +1,73 @@
+.main {
+	top: 0%;
+	margin-bottom: 0%;
+	width: 100%;
+	bottom: 0%;
+}
+
+.luffy {
+	position: absolute;
+	max-height: 2000px;
+	width: 100%;
+	min-height: 680px;
+	height: 100%;
+}
+
+.main2 {
+	margin: 0% 30% 0% 35%;
+	padding: 1%;
+	text-align: left;
+}
+
+.ques_main2 {
+	margin: 2% 10% 0% 15%;
+	text-align: left;
+}
+
+.logo {
+	color: #266e32;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size: 27px;
+	margin-right: auto;
+}
+
+.logo:hover {
+	text-decoration: none;
+	color: #266e32;
+}
+
+.detail {
+	display: block;
+	margin-bottom: 7px;
+	margin-top: 10px;
+	color: #555;
+	font-weight: bold;
+}
+
+.inp {
+	width: 100%;
+	margin-bottom: 5%;
+	border-radius: 5px;
+	margin: 0 auto;
+	box-shadow: 0 0 20px rgba(3, 51, 93, 0.2);
+}
+
+tbody td {
+	transition: all 0.2s linear;
+	transition-delay: 0.2s, 0s;
+}
+
+tbody tr:hover td {
+	background-color: whitesmoke;
+	transition-delay: 0s, 0s;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	transform: scale(1.1);
+}
+
+td {
+	transform-origin: center left;
+	transition-property: transform;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+}

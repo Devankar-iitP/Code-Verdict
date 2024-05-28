@@ -1,0 +1,17 @@
+{% extends 'dynamic_files/base.html' %} {% block body %}
+<span></span>
+{% include "dynamic_files/navbar.html" %}
+<span></span>
+{% include "dynamic_files/alert.html"%}
+
+<div class="jumbotron luffy" style="background-color: #c6eda4; margin-top: 5px">
+	<img
+		src="/static/Images/coder.png/"
+		width="60%"
+		height="90%"
+		style="float: right" />
+
+	{% include "dynamic_files/content.html" %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'dynamic_files/base.html' %} {% block body %}
+
+<div
+	class="luffy"
+	style="background-image: linear-gradient(#85ffbd, #fffb7d); height: 900px">
+	<form method="post" id="reg_form">
+		{% csrf_token %}
+		<!-- CSRF token for security -->
+
+		<div class="main2">
+			{% include "dynamic_files/alert.html" %}
+			<h1
+				style="
+					text-align: center;
+					font-family: 'Courier New', Courier, monospace;
+					font-weight: 500;
+				">
+				CREATE ACCOUNT
+			</h1>
+
+			<span class="detail">Full Name</span>
+			<input
+				class="form-control inp"
+				type="text"
+				name="name"
+				placeholder="Enter Your Name" />
+
+			<span class="detail">Email address</span>
+			<input
+				class="form-control inp"
+				type="email"
+				name="mail"
+				placeholder="xyz@gmail.com" />
+			<small>We'll never share your email with anyone else.</small>
+
+			<span class="detail">Contact Number</span>
+			<input class="form-control inp" type="number" name="number" />
+
+			<span class="detail">Gender</span>
+			<span style="margin-right: 5px">Male </span>
+			<input
+				type="radio"
+				name="Gender"
+				style="margin-right: 20%"
+				value="1"
+				checked />
+
+			<span style="margin-right: 5px">Female </span>
+			<input type="radio" name="Gender" value="2" />
+
+			<span class="detail">User Name</span>
+			<input
+				class="form-control inp"
+				type="text"
+				name="username"
+				placeholder="Enter Your Username" />
+
+			<span class="detail">Password</span>
+			<input class="form-control inp" type="text" name="password" />
+
+			<span class="detail">Confirm Password</span>
+			<input
+				class="form-control inp"
+				type="password"
+				name="re-password"
+				placeholder="Re-enter Your Password" />
+
+			<!-- Link to registration page -->
+			<p style="margin-top: 1%; margin-bottom: 5px">
+				Already have an account ? Click here to <a href="/auth/login/">Login</a>
+			</p>
+		</div>
+	</form>
+
+	<button
+		style="margin-left: 50%; margin-bottom: 1%; width: 100px"
+		class="btn btn-outline-primary"
+		data-toggle="modal"
+		data-target="#exampleModal">
+		<strong>Register</strong>
+	</button>
+
+	<div
+		class="modal fade"
+		id="exampleModal"
+		tabindex="-1"
+		role="dialog"
+		aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">
+						Please select your Role
+					</h5>
+					<button
+						type="button"
+						class="close"
+						data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<span class="detail">Role</span>
+					<span style="margin-right: 5px">Student </span>
+					<input
+						form="reg_form"
+						type="radio"
+						name="Role"
+						style="margin-right: 20%"
+						value="1"
+						checked />
+
+					<span style="margin-right: 5px">Employee </span>
+					<input type="radio" form="reg_form" name="Role" value="2" />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">
+						Close
+					</button>
+
+					<button type="submit" form="reg_form" class="btn btn-success">
+						Submit
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

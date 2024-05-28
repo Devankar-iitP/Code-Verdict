@@ -1,0 +1,30 @@
+{% extends 'dynamic_files/base.html' %} {% block body %}
+<span></span>
+{% include "dynamic_files/navbar.html" %}
+<span></span>
+{% include "dynamic_files/alert.html" %}
+<span></span>
+{% if gender == 1 %}
+
+<div class="jumbotron luffy" style="background-color: #ead0b5; margin-top: 5px">
+	<img
+		src="/static/Images/boy.png/"
+		width="40%"
+		height="100%"
+		style="float: right" />
+
+	{% include "dynamic_files/content.html" %}
+</div>
+
+{% else %}
+
+<div class="jumbotron luffy" style="background-color: #f6bbd6; margin-top: 5px">
+	<img
+		src="/static/Images/girl.png/"
+		width="40%"
+		height="100%"
+		style="float: right" />
+	{% include "dynamic_files/content.html" %} {% endif %}
+</div>
+
+{% endblock body %}

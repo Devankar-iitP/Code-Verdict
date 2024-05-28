@@ -1,0 +1,42 @@
+{% extends 'dynamic_files/base.html' %} {% block body %}
+
+<div
+	class="luffy"
+	style="background-image: linear-gradient(#ffdee9, #b5fffc); position: fixed">
+	<form method="post">
+		{% csrf_token %}
+		<!-- CSRF token for security -->
+
+		<img src="/static/Images/img-01.png" style="margin-left: 41%" />
+
+		<div class="main2">
+			{% include "dynamic_files/alert.html" %}
+			<h3 style="text-align: center">USER LOGIN</h3>
+
+			<span class="detail">User Name</span>
+			<input
+				class="form-control inp"
+				type="text"
+				name="username"
+				placeholder="Enter Your Username" />
+
+			<span class="detail">Password</span>
+			<input class="form-control inp" type="password" name="password" />
+
+			<!-- Link to registration page -->
+			<p style="margin-top: 2%">
+				Don't have an account ?
+				<a href="/auth/registration/">Create your account</a>
+			</p>
+
+			<button
+				type="submit"
+				class="btn btn-outline-success"
+				style="margin-left: 42%; width: 100px; margin-top: 5%">
+				Login
+			</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

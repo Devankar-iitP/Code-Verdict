@@ -1,0 +1,35 @@
+{% extends 'dynamic_files/base.html' %} {% block body %}
+<span></span>
+{% include "dynamic_files/navbar.html" %}
+
+<table class="table table-striped" style="margin-top: 15px">
+	<thead
+		style="
+			color: white;
+			background-color: rgb(35, 39, 43);
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: larger;
+		">
+		<tr>
+			<th>Problem Name</th>
+			<th>Difficulty</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% for names in all_ques %}
+		<tr>
+			<td>{{names.name}}</td>
+			<td>
+				{% if names.difficulty == 1 %} Easy
+				<span></span>
+				{% elif names.difficulty == 2 %} Medium
+				<span></span>
+				{% else %} Hard {% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+{% endblock %}

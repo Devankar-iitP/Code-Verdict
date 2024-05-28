@@ -1,0 +1,51 @@
+{% for msg in messages %} {% if msg.tags == 'success' %}
+
+<div
+	style="
+		margin-top: 10px;
+		z-index: 1;
+		border-color: rgba(20, 119, 20, 0.451);
+		border-style: solid;
+	"
+	id="alert"
+	class="alert alert-success alert-dismissible fade show"
+	role="alert">
+	<strong>{{msg}}</strong>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+
+	<script>
+		alert = document.getElementById("alert");
+		setTimeout(() => {
+			$("#alert").alert("close");
+		}, 2000);
+	</script>
+</div>
+
+{% else %}
+
+<div
+	style="
+		margin-top: 10px;
+		z-index: 1;
+		border-color: rgba(255, 0, 0, 0.367);
+		border-style: solid;
+	"
+	id="alert"
+	class="alert alert-danger alert-dismissible fade show"
+	role="alert">
+	<strong>{{msg}}</strong>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+
+	<script>
+		alert = document.getElementById("alert");
+		setTimeout(() => {
+			$("#alert").alert("close");
+		}, 2000);
+	</script>
+</div>
+
+{% endif %} {% endfor %}
