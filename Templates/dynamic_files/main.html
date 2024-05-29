@@ -4,7 +4,27 @@
 <span></span>
 {% include "dynamic_files/alert.html" %}
 
-{% for txt in desc %}
-  {{txt}}
-{% endfor %}
+<script>
+	var str = ques.description;
+	document.getElementById("meraDiv").innerHTML = str;
+</script>
+
+<div class="luffy" style="margin-top: 5px">
+	<div
+		id="meraDiv"
+		style="
+			margin-top: 10px;
+			overflow-y: scroll;
+			float: right;
+			width: 40%;
+			height: 100%;
+			background-color: rgb(30, 30, 29);
+			color: white;
+		">
+		{% for txt in desc %} {{txt}} {% endfor %}
+	</div>
+	
+	<div style="overflow-y: scroll; height: 100%">hello guys</div>
+</div>
+
 {% endblock %}
