@@ -8,6 +8,7 @@ class question(models.Model):
     description = models.TextField(null=True)
     in_format = models.TextField(null=True)
     out_format = models.TextField(null=True)
+    type_name = models.IntegerField(default='1')
 
     def __str__(self):
         return self.name

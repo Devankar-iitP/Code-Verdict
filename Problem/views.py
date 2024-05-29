@@ -12,6 +12,7 @@ def ques(request):
         description = request.POST['desc']
         in_format = request.POST['in_format']
         out_format = request.POST['out_format']
+        type_name = request.POST['type_name']
 
         if len(name) < 1 :
             messages.warning(request, 'Problem name cannot be empty !')
@@ -33,13 +34,13 @@ def ques(request):
             messages.warning(request,'Some Problem with the same name already exists !')
             return redirect("/ques")
         
-        user = question(name= name ,difficulty= difficulty ,description= description, in_format= in_format, out_format= out_format)
+        user = question(name= name ,difficulty= difficulty ,description= description, in_format= in_format, out_format= out_format, type_name = type_name)
         user.save()
 
         dict={
             'title' : 'Create Testcase',
             'chk' : 1,
-            'id_' : name
+            'id_' : name,
         }
 
         if 'test' in request.POST:
@@ -67,13 +68,13 @@ def test(request):
 
         if len(in_format) < 1 :
             messages.warning(request, 'Input cannot be empty !')
-            if id != '-1':
+            if id_ != '-1':
                 return render(request, 'dynamic_files/testcase_set.html', dict1)
             return redirect("/ques/test")
         
         if len(out_format) < 1 :
             messages.warning(request, 'Output cannot be empty !')
-            if id != '-1':
+            if id_ != '-1':
                 return render(request, 'dynamic_files/testcase_set.html', dict1)
             return redirect("/ques/test")
         
@@ -92,7 +93,7 @@ def test(request):
 
         if testcase.objects.filter(question = ques, inputs=in_format, outputs=out_format).exists():
             messages.warning(request,'Testcase already exists !')
-            if id != '-1':
+            if id_ != '-1':
                 return render(request, 'dynamic_files/testcase_set.html', dict1)
             return redirect("/ques/test")
         
