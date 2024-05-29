@@ -5,16 +5,16 @@
 <div
 	class="luffy"
 	style="
-		background-image: linear-gradient(120deg, #89e7fe 0%, #66ffa8 100%);
+		background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
 		margin-top: 5px;
 		height: 1500px;
 	">
-	<form method="post">
+
+	<form method="post" action="/ques/test/">
 		{% csrf_token %}
 		<!-- CSRF token for security -->
 
 		<div class="ques_main2">
-			{% include "dynamic_files/alert.html" %}
 			<h3
 				style="
 					text-align: center;
@@ -23,6 +23,7 @@
 				CREATE TESTCASES
 			</h3>
 
+			{% include "dynamic_files/alert.html" %} {% if chk == 0 %}
 			<span class="detail">Problem Name</span>
 			<input
 				class="form-control inp"
@@ -30,6 +31,11 @@
 				name="name"
 				placeholder="Enter Problem Name"
 				style="width: 50%; margin-left: 0%" />
+			<input type="hidden" name="id_" value="-1" />
+			{% else %}
+			<input type="hidden" name="id_" value="{{id_}}" />
+			<input type="hidden" name="name" value="-1" />
+			{% endif %}
 
 			<div class="form-row" style="margin-top: 3%">
 				<div class="form-group col-md-6">
@@ -53,9 +59,18 @@
 
 			<button
 				type="submit"
+				name="test"
 				class="btn btn-success"
-				style="margin-left: 42%; width: 100px; margin-top: 5%">
-				Create
+				style="margin-left: 10%; width: 300px; margin-top: 3%">
+				Save and create another
+			</button>
+
+			<button
+				type="submit"
+				name="dash"
+				class="btn btn-primary"
+				style="float: right; margin-right: 10%; width: 300px; margin-top: 3%">
+				Save and go to Dashboard
 			</button>
 		</div>
 	</form>

@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('Authentication.urls')),
     path('dash/', views.dash),
+    path('dash/<int:ques_id>/', views.ques),
     path('', views.index),
     path('home/', views.home, name='home'),
     path("ques/", include('Problem.urls')),

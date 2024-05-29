@@ -34,3 +34,16 @@ def dash(request):
     }
 
     return render(request,'dynamic_files/dash.html', dict)
+
+@unauthenticated_user
+def ques(request, ques_id):
+    ques = question.objects.get(pk=ques_id)
+    dict={
+        'title' : ques.name,
+        'desc' : ques.description,
+        'inp' : ques.in_format,
+        'out' : ques.out_format,
+        'diff' : ques.difficulty,
+    }
+
+    return render(request,'dynamic_files/main.html', dict)

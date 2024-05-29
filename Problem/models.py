@@ -18,7 +18,7 @@ class testcase(models.Model):
     outputs = models.CharField(max_length=2000)
 
     def __str__(self):
-        return self.question
+        return self.question.name 
     
 class attempt(models.Model):
     user = models.ForeignKey(detail, on_delete=models.CASCADE)

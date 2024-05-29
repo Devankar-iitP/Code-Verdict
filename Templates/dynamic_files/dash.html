@@ -1,6 +1,8 @@
 {% extends 'dynamic_files/base.html' %} {% block body %}
 <span></span>
 {% include "dynamic_files/navbar.html" %}
+<span></span>
+{% include "dynamic_files/alert.html" %}
 
 <table class="table table-striped" style="margin-top: 15px">
 	<thead
@@ -19,7 +21,11 @@
 	<tbody>
 		{% for names in all_ques %}
 		<tr>
-			<td>{{names.name}}</td>
+			<td>
+				<a href="/dash/{{names.id}}" style="text-decoration: none; color: rgb(74, 73, 73);">
+					{{names.name}}
+				</a>
+			</td>
 			<td>
 				{% if names.difficulty == 1 %} Easy
 				<span></span>

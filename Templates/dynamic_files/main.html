@@ -1,0 +1,10 @@
+{% extends 'dynamic_files/base.html' %} {% block body %}
+<span></span>
+{% include "dynamic_files/navbar.html" %}
+<span></span>
+{% include "dynamic_files/alert.html" %}
+
+{% for txt in desc %}
+  {{txt}}
+{% endfor %}
+{% endblock %}
