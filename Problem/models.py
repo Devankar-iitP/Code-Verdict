@@ -1,5 +1,4 @@
 from django.db import models
-from Authentication.models import detail
 
 # Create your models here.
 class question(models.Model):
@@ -20,9 +19,3 @@ class testcase(models.Model):
 
     def __str__(self):
         return self.question.name 
-    
-class attempt(models.Model):
-    user = models.ForeignKey(detail, on_delete=models.CASCADE)
-    question = models.ForeignKey(question, on_delete=models.CASCADE)
-    num = models.PositiveIntegerField()
-    status = models.DecimalField(max_digits=1, decimal_places=0)

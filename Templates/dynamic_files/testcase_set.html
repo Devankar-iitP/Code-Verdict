@@ -9,7 +9,6 @@
 		margin-top: 5px;
 		height: 1500px;
 	">
-
 	<form method="post" action="/ques/test/">
 		{% csrf_token %}
 		<!-- CSRF token for security -->
@@ -44,7 +43,8 @@
 						style="height: 300px"
 						name="inputs"
 						class="form-control inp"
-						placeholder="You can expand the area from bottom-right corner of this box."></textarea>
+						placeholder="You can expand the area from bottom-right corner of this box.
+Enter the input exactly as you want to show user. "></textarea>
 				</div>
 
 				<div class="form-group col-md-6">
@@ -53,7 +53,8 @@
 						style="height: 300px"
 						name="outputs"
 						class="form-control inp"
-						placeholder="You can expand the area from bottom-right corner of this box."></textarea>
+						placeholder="You can expand the area from bottom-right corner of this box.
+Enter the output exactly as you want to show user."></textarea>
 				</div>
 			</div>
 

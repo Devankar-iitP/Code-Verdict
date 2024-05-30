@@ -12,9 +12,12 @@
 			float: right;
 			width: 40%;
 			height: 100%;
-			background-color: rgb(30, 30, 29);
-			color: white;
-		"></div>
+		">
+		<textarea
+			name=""
+			style="background-color: rgb(30, 30, 29); color: white"></textarea>
+		<code></code>
+	</div>
 
 	<div
 		style="
@@ -22,8 +25,9 @@
 			height: 100%;
 			margin-left: 15px;
 			margin-top: 5px;
+			padding-right: 20px;
 		">
-		<h2 style="display: inline">{{ques.name}}</h2>
+		<h1 style="display: inline">{{ques.name}}</h1>
 		{% if ques.difficulty == 1 %}
 		<button
 			class="btn btn-success"
@@ -46,9 +50,7 @@
 		<hr />
 
 		{% if ques.type_name == 1 %}
-		<span></span>
-		{{ques.description}}
-		<span></span>
+		<p>{{ques.description}}</p>
 
 		{% elif ques.type_name == 2 %}
 		<p id="ussopp"></p>
@@ -61,6 +63,61 @@
 		<md-block> {{ques.description}} </md-block>
 		<script type="module" src="https://md-block.verou.me/md-block.js"></script>
 		{% endif %}
+
+		<h3>Input</h3>
+		<hr />
+		{% if ques.type_name == 1 %}
+		<p>{{ques.in_format}}</p>
+
+		{% elif ques.type_name == 2 %}
+		<p id="chopper"></p>
+		<script>
+			var text = "{{ques.in_format|escapejs|safe}}"; // Your HTML string
+			document.getElementById("chopper").innerHTML = text;
+		</script>
+
+		{% else %}
+		<md-block> {{ques.in_format}} </md-block>
+		<script type="module" src="https://md-block.verou.me/md-block.js"></script>
+		{% endif %}
+
+		<h3>Output</h3>
+		<hr />
+		{% if ques.type_name == 1 %}
+		<p>{{ques.out_format}}</p>
+
+		{% elif ques.type_name == 2 %}
+		<p id="jinbei"></p>
+		<script>
+			var text = "{{ques.out_format|escapejs|safe}}"; // Your HTML string
+			document.getElementById("jinbei").innerHTML = text;
+		</script>
+
+		{% else %}
+		<md-block> {{ques.out_format}} </md-block>
+		<script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
+		{% endif %}
+
+		<br />
+		<div class="card">
+			<div
+				class="card-header"
+				style="font-size: x-large; font-style: italic; font-weight: 500">
+				Base Testcase
+			</div>
+			<div class="card-body">
+				<div style="display: inline; float: left">
+					<h5 class="card-title">Input</h5>
+					<pre>{{test.inputs}}</pre>
+				</div>
+
+				<div style="display: inline; float: right; margin-right: 20px">
+					<h5 class="card-title">Output</h5>
+					<pre>{{test.outputs}}</pre>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 

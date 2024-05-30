@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from Authentication.models import detail
 from .decorators import unauthenticated_user
-from Problem.models import question
+from Problem.models import question, testcase
 
 # Create your views here.
 def index(request):
@@ -38,4 +38,10 @@ def dash(request):
 @unauthenticated_user
 def ques(request, ques_id):
     ques = question.objects.get(pk=ques_id)
-    return render(request,'dynamic_files/main.html', {'title' : ques.name,'ques' : ques})
+    test = testcase.objects.filter(question = ques)[0]
+    dict = {
+        'title' : ques.name,
+        'ques' : ques,
+        'test' : test
+    }
+    return render(request,'dynamic_files/main.html', dict)

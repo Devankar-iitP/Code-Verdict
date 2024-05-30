@@ -27,4 +27,5 @@ urlpatterns = [
     path('', views.index),
     path('home/', views.home, name='home'),
     path("ques/", include('Problem.urls')),
+    path("compile/", include('Compiler.urls')),
 ]

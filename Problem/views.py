@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from Code_Verdict.decorators import allowed_users
-from .models import question, testcase, attempt
+from .models import question, testcase
 
 # Create your views here.
 @allowed_users(allowed_roles=['Employee'])

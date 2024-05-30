@@ -38,6 +38,10 @@ def req(request):
             messages.warning(request,'Contact number must consists of exactly 10 digits. Try again !')
             return redirect("/auth/registration/")
         
+        if username.isspace():
+            messages.warning(request,'Username cannot contain spacing characters !')
+            return redirect("/auth/registration/")
+
         user = detail(name= name ,mail= mail ,num= num , gender= gender ,username= username)
         user1 = User.objects._create_user(username, mail, pass1)
         user1.set_password(pass1)
