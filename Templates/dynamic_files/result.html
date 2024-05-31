@@ -1,0 +1,9 @@
+{% extends 'dynamic_files/base.html' %} {% block body %}
+<span></span>
+{% include "dynamic_files/navbar.html" %}
+<span></span>
+{% include "dynamic_files/alert.html" %}
+
+<p>Hi {{user.username}} !!</p>
+  {{pop}}
+{% endblock %}
