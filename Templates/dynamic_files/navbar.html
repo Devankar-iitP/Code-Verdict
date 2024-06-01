@@ -1,4 +1,4 @@
-{% if user.is_authenticated %}
+{% if request.user.is_authenticated %}
 
 <nav
 	class="navbar main navbar-light"
@@ -24,6 +24,14 @@
 				class="nav-link {% if request.path == '/dash/' %} active {% endif %}"
 				href="/dash"
 				><strong>Dashboard</strong></a
+			>
+		</li>
+		
+		<li class="nav-item">
+			<a
+				class="nav-link {% if request.path == '/profile/' %} active {% endif %}"
+				href="/profile"
+				><strong>Profile</strong></a
 			>
 		</li>
 	</ul>

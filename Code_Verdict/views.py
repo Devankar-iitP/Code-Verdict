@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.models import User
 from Authentication.models import detail
 from .decorators import unauthenticated_user
 from Problem.models import question, testcase
+from Compiler.models import info
 
 # Create your views here.
 def index(request):
@@ -45,3 +47,15 @@ def ques(request, ques_id):
         'test' : test
     }
     return render(request,'dynamic_files/main.html', dict)
+
+@unauthenticated_user
+def profile(request):
+    user = User.objects.get(username=request.user.username)
+    brief = detail.objects.get(username = request.user.username)
+    data = info.objects.filter(user = user).order_by('-time')
+    dict = {
+        'title' : 'Profile',
+        'user' : brief,
+        'info' : data        
+    }
+    return render(request,'dynamic_files/profile.html', dict)
