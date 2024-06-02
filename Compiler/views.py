@@ -92,21 +92,15 @@ def run(request, ques_id, code, language):
             capture_output= True,
             text = True
         )
-    elif language == '3':
-        compile_result = subprocess.run(
-            ["javac", code_path],
-            text = True,
-            capture_output=True
-        )
 
-    if language!='2' and compile_result.returncode:
-        messages.warning(request, 'Compilation ERROR !')
-        messages.warning(request, f'{compile_result.stderr}')
-        return 0
+        if compile_result.returncode:
+            messages.warning(request, 'Compilation ERROR !')
+            messages.warning(request, f'{compile_result.stderr}')
+            return 0
 
-    if language!='2' and 'run' in request.POST:
-        messages.success(request, f'Compiled SUCCESSFULLY {request.user.username} ^_^')
-        return 0
+        if 'run' in request.POST:
+            messages.success(request, f'Compiled SUCCESSFULLY {request.user.username} ^_^')
+            return 0
     
 # ******************* End of Compiling Code *********************************
     
@@ -130,9 +124,8 @@ def run(request, ques_id, code, language):
                         capture_output=True
                     )
             elif language == '3':
-                java_class, ext = os.path.splitext(code_path)
                 run_result = subprocess.run(
-                    ["java", java_class],
+                    ["java", code_path],
                     stdin = input_file, 
                     capture_output=True,
                     text = True
@@ -168,8 +161,10 @@ def run(request, ques_id, code, language):
 # Taking care of by-mistake enter pressed by problem-setter
         minato = [s for s in each_testcase.outputs.split('\r\n') if s]
 
-        print(minato)
-        print(kakashi)
+# For debugging purpose
+        # print(minato)
+        # print(kakashi)
+
         if len(minato) != len(kakashi):
             messages.warning(request, 'Output generated must have same format as described !')
             return 0
