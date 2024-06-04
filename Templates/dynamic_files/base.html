@@ -36,6 +36,9 @@
 			href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
 			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 			crossorigin="anonymous" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
 		<link rel="stylesheet" href="/static/CSS/main.css" />
 
@@ -44,7 +47,7 @@
 			@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap");
 
 			#preCode code,
-			textarea,
+			#textarea1,
 			#lineNumbers,
 			.lineNumbers {
 				font-family: "Roboto Mono", monospace;
@@ -77,9 +80,10 @@
 				height: 550px;
 				width: 700px;
 				overflow: auto;
+				overscroll-behavior-y: contain;
 			}
 
-			textarea {
+			#textarea1 {
 				position: absolute;
 				top: 0;
 				left: 50px;
@@ -159,6 +163,10 @@
 				});
 			}
 
+			// Update automatically after page is directly loaded or navigated back from another page
+			window.addEventListener("load", updateCode);
+			window.addEventListener("pageshow", updateCode);
+
 			// update changes in the textarea
 			textarea1.addEventListener("input", () => {
 				updateCode();
@@ -166,9 +174,9 @@
 
 			// sync the scroll bar position between textarea and code block
 			textarea1.addEventListener("scroll", () => {
-				codeBlock.scrollTop = textarea1.scrollTop;
 				codeBlock.scrollLeft = textarea1.scrollLeft;
 				lineNumbers.scrollTop = textarea1.scrollTop;
+				codeBlock.scrollTop = textarea1.scrollTop;
 			});
 
 			// applying shortcut keys
@@ -179,19 +187,22 @@
 					e.preventDefault();
 
 					var cursorPos = textarea1.selectionStart;
+
 					// Get the previous line
 					var prevLine = textarea1.value
 						.substring(0, cursorPos)
 						.split("\n")
 						.slice(-1)[0];
 
-					// Get the indentation of the previous line
+					// Get the indentation of previous line using RegExp
+					// ^ - start of a line
+					// * - the rest of the line
+					//  \s matches whitespace character
 					var indent = prevLine.match(/^\s*/)[0];
 
 					// Add a new line with the same indentation
 					// Shifts cursor to end
 					textarea1.setRangeText("\n" + indent, cursorPos, cursorPos, "end");
-
 					updateCode();
 					return;
 				}
@@ -212,8 +223,8 @@
 					// Update the textarea value and cursor position
 					textarea1.value = newValue;
 					textarea1.selectionStart = cursorPosition + 4;
-					textarea1.selectionEnd = cursorPosition + 4;
-
+					textarea1.sel;
+					ectionEnd = cursorPosition + 4;
 					updateCode();
 					return;
 				}
@@ -235,7 +246,7 @@
 						}
 					}
 
-					if (leadingSpaces > 0) {
+					if (leadingSpaces) {
 						// Remove the spaces
 						let newValue =
 							textarea1.value.substring(0, cursorPosition - leadingSpaces) +
