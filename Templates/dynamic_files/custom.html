@@ -1,0 +1,99 @@
+{% extends 'dynamic_files/base.html' %} {% block body %}
+<span></span>
+{% include "dynamic_files/navbar.html" %}
+
+<div
+	class="luffy"
+	style="
+		background-image: url('/static/Images/input-bg.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 1000px;
+	">
+	<form method="post">
+		{% csrf_token %}
+		<!-- CSRF token for security -->
+
+		<div class="test_main">
+			<h1
+				style="
+					color: whitesmoke;
+					text-align: center;
+					font-family: Verdana, Geneva, Tahoma, sans-serif;
+				">
+				CUSTOM INPUT
+			</h1>
+
+			{% include "dynamic_files/alert.html" %}
+			<div class="form-row" style="margin-top: 10%">
+				<div class="form-group col-md-2">
+					<h3 style="color: whitesmoke" class="detail">Language :</h3>
+					{% if chk == 0 %}
+					<select
+						name="language"
+						class="form-select lg"
+						aria-label="Default select example">
+						<option value="1" selected>C++</option>
+						<option value="2">Python</option>
+						<option value="3">Java</option>
+						<option value="4">C</option>
+					</select>
+					{% elif lang == '1' %}
+					<h5 style="color: rgb(214, 216, 74)" class="detail">C++</h5>
+					{% elif lang == '2' %}
+					<h5 style="color: rgb(214, 216, 74)" class="detail">Python</h5>
+					{% elif lang == '3' %}
+					<h5 style="color: rgb(214, 216, 74)" class="detail">Java</h5>
+					{% else %}
+					<h5 style="color: rgb(214, 216, 74)" class="detail">C-Programming</h5>
+					{% endif %}
+				</div>
+
+				<div class="form-group col-md-7">
+					<h3 style="color: whitesmoke" class="detail">Code</h3>
+					{% if chk == 0 %}
+					<textarea
+						style="height: 550px"
+						name="code"
+						class="form-control inp"
+						placeholder="Enter your code here."></textarea>
+
+					{% else %}
+					<pre style="height: 550px" class="form-control inp">{{code}} </pre>
+					{% endif %}
+				</div>
+
+				<div class="form-group col-md-3">
+					<h3 style="color: whitesmoke" class="detail">Input</h3>
+					{% if chk == 0 %}
+					<textarea
+						style="height: 250px"
+						name="inputs"
+						class="form-control inp"
+						placeholder="Enter your input here."></textarea>
+
+					{% else %}
+					<pre style="height: 250px" class="form-control inp">{{inputs}}</pre>
+					{% endif %}
+
+					<h3 style="color: whitesmoke" class="detail">Output</h3>
+					{% if chk == 0 %}
+					<span style="height: 250px" class="form-control inp"> </span>
+
+					{% else %}
+					<pre style="height: 250px" class="form-control inp">{{outputs}}</pre>
+					{% endif %}
+				</div>
+			</div>
+
+			<button
+				type="submit"
+				class="btn btn-success"
+				style="margin-left: 40%; width: 300px; margin-top: 1%">
+				<strong>Let's Run and check the output !</strong>
+			</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}
