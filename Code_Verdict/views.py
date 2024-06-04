@@ -102,10 +102,6 @@ def custom(request):
             messages.warning(request, 'Code cannot be empty !')
             return redirect('/custom')
         
-        if len(input_data) < 1:
-            messages.warning(request, 'Input cannot be empty !')
-            return redirect('/custom')
-        
 # ******************* Creating needed files *********************************
         path = settings.BASE_DIR
         files = ["codes", "inputs"]
@@ -162,27 +158,35 @@ def custom(request):
 # NOTE => stdin will not work in non-interactive environment
 # so you can't write and take input at the same time --> split
         with open(input_path, "r") as input_file:
-            if language == '1' or language == '4':
+            try:
+                if language == '1' or language == '4':
+                        run_result = subprocess.run(
+                            [executable_path],
+                            stdin=input_file,
+                            text = True,
+                            capture_output=True,
+                            timeout=1
+                        )
+                elif language == '3':
                     run_result = subprocess.run(
-                        [executable_path],
+                        ["java", code_path],
+                        stdin = input_file, 
+                        capture_output=True,
+                        timeout=1,
+                        text = True
+                    )
+                else:
+                    run_result = subprocess.run(
+                        ["python3", code_path],
                         stdin=input_file,
                         text = True,
-                        capture_output=True
+                        capture_output=True,
+                        timeout=1
                     )
-            elif language == '3':
-                run_result = subprocess.run(
-                    ["java", code_path],
-                    stdin = input_file, 
-                    capture_output=True,
-                    text = True
-                )
-            else:
-                run_result = subprocess.run(
-                    ["python3", code_path],
-                    stdin=input_file,
-                    text = True,
-                    capture_output=True
-                )
+            except subprocess.TimeoutExpired:
+                # Check if the subprocess is still running after 1 second
+                messages.warning(request, 'ERROR : TLE ! Time limit of 3 seconds !! ')
+                return redirect('/custom')
         
         if run_result.returncode:
             messages.warning(request, 'Compilation ERROR !')

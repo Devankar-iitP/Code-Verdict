@@ -305,9 +305,14 @@
 										<button type="button" class="btn btn-success">
 											Accepted
 										</button>
-										{% else %}
+										{% elif submission.status == 2 %}
 										<button type="button" class="btn btn-danger">
 											Wrong Answer
+										</button>
+										{% else %}
+										<button type="button" class="btn btn-warning">
+											<i class="bi bi-alarm"></i>
+											TLE
 										</button>
 										{% endif %}
 									</th>

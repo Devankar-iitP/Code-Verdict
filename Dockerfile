@@ -24,6 +24,10 @@ EXPOSE 8000
 # NOTE - space after equal sign is not allowed 
 # DJANGO_SETTINGS_MODULE= Code_Verdict.settings --> gives error
 ENV DJANGO_SETTINGS_MODULE=Code_Verdict.settings
+
+# python output -> stdout and stderr streams are sent straight to terminal like logs without being first buffered
+# => can see output in real time + ensures that no partial output is held in buffer somewhere and never written in case python crashes.
+# PYTHONUNBUFFERED has absolutely no effect on input (i.e. the stdin stream)
 ENV PYTHONUNBUFFERED = 1
 
 # Run only once when container starts

@@ -32,7 +32,7 @@ def main(request, ques_id, username):
     naruto = info(user=user, question=ques, code=code, status=status, language=language,time=timezone.now())
     naruto.save()
     
-    if status == 2:
+    if status != 1:
         return redirect(f'/dash/{ques_id}')
 
     brief = detail.objects.get(username = username)
@@ -140,36 +140,44 @@ def run(request, ques_id, code, language):
 # NOTE => stdin will not work in non-interactive environment
 # so you can't write and take input at the same time --> split
         with open(input_path, "r") as input_file:
-            if language == '1' or language == '4':
+            try:
+                if language == '1' or language == '4':
+                        run_result = subprocess.run(
+                            [executable_path],
+                            stdin=input_file,
+                            text = True,
+                            capture_output=True,
+                            timeout=1
+                        )
+                elif language == '3':
                     run_result = subprocess.run(
-                        [executable_path],
+                        ["java", code_path],
+                        stdin = input_file, 
+                        capture_output=True,
+                        timeout=1,
+                        text = True
+                    )
+                else:
+                    run_result = subprocess.run(
+                        ["python3", code_path],
                         stdin=input_file,
                         text = True,
-                        capture_output=True
+                        capture_output=True,
+                        timeout=1
                     )
-            elif language == '3':
-                run_result = subprocess.run(
-                    ["java", code_path],
-                    stdin = input_file, 
-                    capture_output=True,
-                    text = True
-                )
-            else:
-                run_result = subprocess.run(
-                    ["python3", code_path],
-                    stdin=input_file,
-                    text = True,
-                    capture_output=True
-                )
-        
-        if run_result.returncode:
-            messages.warning(request, 'Compilation ERROR !')
-            messages.warning(request, f'{run_result.stderr}')
-            return 0
-        
-        if 'run' in request.POST:
-            messages.success(request, f'Compiled SUCCESSFULLY {request.user.username} ^_^')
-            return 0
+            except subprocess.TimeoutExpired:
+                # Check if the subprocess is still running after 1 second
+                messages.warning(request, 'ERROR : TLE ! Time limit of 3 seconds !! ')
+                return 3
+
+            if run_result.returncode:
+                messages.warning(request, 'Compilation ERROR !')
+                messages.warning(request, f'{run_result.stderr}')
+                return 0
+            
+            if 'run' in request.POST:
+                messages.success(request, f'Compiled SUCCESSFULLY {request.user.username} ^_^')
+                return 0
         
 # ******************* End of Run CODE *********************************
 
