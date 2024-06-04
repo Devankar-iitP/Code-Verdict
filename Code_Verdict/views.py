@@ -42,7 +42,12 @@ def dash(request):
 @unauthenticated_user
 def ques(request, ques_id):
     ques = question.objects.get(pk=ques_id)
-    test = testcase.objects.filter(question = ques)[0]
+    try:
+        test = testcase.objects.filter(question = ques)[0]
+    except:
+        messages.warning(request, 'First create a test-case !!')
+        return redirect('/ques/test')
+
     dict = {
         'title' : ques.name,
         'ques' : ques,

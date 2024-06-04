@@ -5,15 +5,48 @@
 {% include "dynamic_files/alert.html" %}
 
 <div class="luffy" style="margin-top: 5px">
-	<div style="margin-top: 10px; float: right; width: 50%; height: 100%">
+	<div style="margin-top: 2px; float: right; width: 50%; height: 100%">
 		<form
 			method="post"
 			action="/compile/{{ques.id}}/{{request.user.username}}/">
 			{% csrf_token %}
+
 			<p>
+				<!-- ***************** CRUD operations ********************* -->
+				{% if request.user.groups.all.0.name == 'Employee' %}
+				<button
+					type="button"
+					style="margin-left: 10px"
+					class="btn btn-outline-danger"
+					data-toggle="modal"
+					data-target="#delete">
+					<i class="bi bi-trash3-fill"></i>
+					<strong>Delete</strong>
+				</button>
+
+				<a
+					href="/ques/update/{{ques.id}}"
+					role="button"
+					style="margin-left: 10px"
+					class="btn btn-outline-primary">
+					<i class="bi bi-file-earmark-arrow-up"></i>
+					<strong>Update</strong>
+				</a>
+				{% endif %}
+
+				<!-- ***************** End of CRUD operations ********************* -->
+				{% if request.user.groups.all.0.name == 'Employee' %}
+				<strong style="margin-left: 40%; margin-right: 20px; font-size: large">
+					Language :
+				</strong>
+
+				{% else %}
 				<strong style="margin-left: 70%; margin-right: 20px; font-size: large">
 					Language :
 				</strong>
+
+				{% endif %}
+
 				<select
 					name="language"
 					class="form-select"
@@ -42,7 +75,7 @@
 				href="/custom"
 				role="button"
 				class="btn btn-secondary"
-				style="margin-left: 10%; width: 150px; margin-top: 10px"
+				style="margin-left: 10%; width: 150px; margin-top: 10px; height: 43px"
 				>Custom Input</a
 			>
 
@@ -51,6 +84,7 @@
 				name="run"
 				class="btn btn-primary"
 				style="margin-left: 10%; width: 150px; margin-top: 10px">
+				<i class="bi bi-play-circle" style="font-size: larger"></i>
 				Run
 			</button>
 
@@ -59,6 +93,7 @@
 				name="Submit"
 				class="btn btn-success"
 				style="float: right; margin-right: 10%; width: 150px; margin-top: 10px">
+				<i class="bi bi-upload" style="font-size: larger"></i>
 				Submit
 			</button>
 		</form>
@@ -72,42 +107,29 @@
 			margin-top: 5px;
 			padding-right: 20px;
 		">
-		<h1 style="display: inline">{{ques.name}}</h1>
-		{% if ques.difficulty == 1 %}
-		<button
-			class="btn btn-success"
-			style="
-				font-weight: 500;
-				float: right;
-				margin-right: 40px;
-				margin-top: 10px;
-			">
-			Easy
-		</button>
-		{% elif ques.difficulty == 2 %}
-		<button
-			class="btn btn-warning"
-			style="
-				font-weight: 500;
-				float: right;
-				margin-right: 40px;
-				margin-top: 10px;
-			">
-			Medium
-		</button>
-		{% else %}
-		<button
-			class="btn btn-danger"
-			style="
-				font-weight: 500;
-				float: right;
-				margin-right: 40px;
-				margin-top: 10px;
-			">
-			Hard
-		</button>
-		{% endif %}
+		<div>
+			<h1 style="display: inline">{{ques.name}}</h1>
+
+			<!-- ***************** Question difficulty ********************* -->
+			<div
+				style="
+					font-weight: 500;
+					float: right;
+					margin-right: 40px;
+					margin-top: 3px;
+				">
+				{% if ques.difficulty == 1 %}
+				<button class="btn btn-success">Easy</button>
+				{% elif ques.difficulty == 2 %}
+				<button class="btn btn-warning">Medium</button>
+				{% else %}
+				<button class="btn btn-danger">Hard</button>
+				{% endif %}
+			</div>
+		</div>
 		<hr />
+
+		<!-- ***************** End of Question difficulty ********************* -->
 
 		{% if ques.type_name == 1 %}
 		<p>{{ques.description}}</p>
@@ -180,5 +202,42 @@
 		</div>
 	</div>
 </div>
+
+<!-- Modal for delete and update -->
+<div
+	class="modal fade"
+	id="delete"
+	tabindex="-1"
+	role="dialog"
+	aria-labelledby="delete_Label"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="delete_Label">Warning !!</h5>
+				<button
+					type="button"
+					class="close"
+					data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body">
+				Are you sure? Do you really want to delete the problem - 
+				<strong>"{{ques.name}}" ?</strong>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+					Close
+				</button>
+				<a role="button" href="/ques/delete/{{ques.id}}" class="btn btn-primary">Yes</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- End of Modal for delete and update -->
 
 {% endblock %}

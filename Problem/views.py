@@ -5,6 +5,47 @@ from .models import question, testcase
 
 # Create your views here.
 @allowed_users(allowed_roles=['Employee'])
+def delete(request, ques_id):
+    ques = question.objects.get(pk=ques_id)
+    ques.delete()
+    messages.success(request, "Problem deleted successfully ^_^ ")
+    return redirect('/dash')
+
+@allowed_users(allowed_roles=['Employee'])
+def update(request, ques_id):
+    ques = question.objects.get(pk=ques_id)
+    if request.method == 'POST':
+        difficulty = request.POST['difficulty']
+        description = request.POST['desc']
+        in_format = request.POST['in_format']
+        out_format = request.POST['out_format']
+        type_name = request.POST['type_name']
+
+        if len(description) < 10 :
+            messages.warning(request, 'Description cannot be less than 10 characters !')
+            return redirect("/ques")
+        
+        if len(in_format) < 10 :
+            messages.warning(request, 'Input Format cannot be less than 10 characters !')
+            return redirect("/ques")
+        
+        if len(out_format) < 10 :
+            messages.warning(request, 'Output Format cannot be less than 10 characters !')
+            return redirect("/ques")
+        
+        ques.difficulty = difficulty
+        ques.description = description
+        ques.in_format = in_format
+        ques.out_format = out_format
+        ques.type_name = type_name
+        ques.save()
+
+        messages.success(request, "Problem updated successfully ^_^ ")
+        return redirect(f'/dash/{ques.pk}')
+
+    return render(request, 'dynamic_files/update.html', {'title': 'Update', 'ques':ques})
+
+@allowed_users(allowed_roles=['Employee'])
 def ques(request):
     if request.method == 'POST':
         name = request.POST['name']
