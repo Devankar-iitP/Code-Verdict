@@ -309,10 +309,15 @@
 										<button type="button" class="btn btn-danger">
 											Wrong Answer
 										</button>
-										{% else %}
+										{% elif submission.status == 3 %}
 										<button type="button" class="btn btn-warning">
 											<i class="bi bi-alarm"></i>
 											TLE
+										</button>
+										{% else %}
+										<button type="button" class="btn btn-warning">
+											<i class="bi bi-exclamation-triangle-fill"></i>
+											Runtime ERROR
 										</button>
 										{% endif %}
 									</th>

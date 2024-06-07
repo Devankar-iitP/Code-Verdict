@@ -7,7 +7,7 @@ from .models import detail
 # Create your views here.
 # username = request.POST['username'] same as username = request.POST.get('username')
 
-def req(request):
+def reg(request):
     if request.method == 'POST':
         name = request.POST['name']
         mail = request.POST['mail']
@@ -18,6 +18,7 @@ def req(request):
         pass2 = request.POST['re-password']
         role = request.POST['Role']
 
+# ***************** Handling error messages ****************************
         if (len(username) < 4 or len(name) < 4):
             messages.warning(request, 'Name or username cannot be less than 4 characters  !')
             return redirect("/auth/registration/")
@@ -41,20 +42,26 @@ def req(request):
         if username.isspace():
             messages.warning(request,'Username cannot contain spacing characters !')
             return redirect("/auth/registration/")
+# ***************** End of handling error messages ****************************
 
-        user = detail(name= name ,mail= mail ,num= num , gender= gender ,username= username)
+# ***************** Creating user with above details ****************************
+
+        user = detail(name= name ,mail= mail ,num= num , gender= gender ,username= username, approved = 0)
         user1 = User.objects._create_user(username, mail, pass1)
         user1.set_password(pass1)
         user.save()
         user1.save()
         
+        messages.success(request,f'Welcome {name}, your account is created successfully ^_^')
         if role == '1':
             grp = Group.objects.get(name='Student')
         else:
+            messages.warning(request,'NOTE - You will be authorized as employee only after verification from admin !!')
             grp = Group.objects.get(name='Employee')
 
         user1.groups.add(grp)
-        messages.success(request,f'Welcome {name}, your account is created successfully ^_^')
+# ***************** End of creating user with above details ****************************
+
         return redirect('/auth/login/')
     
     return render(request, 'dynamic_files/registration.html', {'title' : 'Registration Page'})

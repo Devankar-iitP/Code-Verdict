@@ -3,9 +3,6 @@ RUN apk add --no-cache openjdk21 g++ gcc
 
 WORKDIR /app
 
-# update and install given packages
-# apk is Alpine Linux package system
-
 # --no-cache means pip will always download the package, even if it has been downloaded before.
 # trade-off between speed during package installation & disk space
 COPY requirements.txt requirements.txt 

@@ -16,7 +16,7 @@
 				{% if request.user.groups.all.0.name == 'Employee' %}
 				<button
 					type="button"
-					style="margin-left: 10px"
+					style="margin-left: 15px"
 					class="btn btn-outline-danger"
 					data-toggle="modal"
 					data-target="#delete">
@@ -47,6 +47,7 @@
 
 				{% endif %}
 
+				<!-- ***************** Code Editor starts ********************* -->
 				<select
 					name="language"
 					class="form-select"
@@ -75,7 +76,14 @@
 				href="/custom"
 				role="button"
 				class="btn btn-secondary"
-				style="margin-left: 10%; width: 150px; margin-top: 10px; height: 43px"
+				style="
+					margin-left: 10%;
+					width: 150px;
+					margin-top: 10px;
+					height: 43px;
+					padding-top: 10px;
+					text-align: center;
+				"
 				>Custom Input</a
 			>
 
@@ -98,6 +106,8 @@
 			</button>
 		</form>
 	</div>
+
+	<!-- ********************************** Code Editor ends ************************************** -->
 
 	<div
 		style="
@@ -131,54 +141,34 @@
 
 		<!-- ***************** End of Question difficulty ********************* -->
 
+		<!-- ***************** Question description starts ********************* -->
+
 		{% if ques.type_name == 1 %}
 		<p>{{ques.description}}</p>
-
 		{% elif ques.type_name == 2 %}
 		<p id="ussopp"></p>
-		<script>
-			var text = "{{ques.description|escapejs|safe}}"; // Your HTML string
-			document.getElementById("ussopp").innerHTML = text;
-		</script>
-
 		{% else %}
 		<md-block> {{ques.description}} </md-block>
-		<script type="module" src="https://md-block.verou.me/md-block.js"></script>
 		{% endif %}
 
 		<h3>Input</h3>
 		<hr />
 		{% if ques.type_name == 1 %}
 		<p>{{ques.in_format}}</p>
-
 		{% elif ques.type_name == 2 %}
 		<p id="chopper"></p>
-		<script>
-			var text = "{{ques.in_format|escapejs|safe}}"; // Your HTML string
-			document.getElementById("chopper").innerHTML = text;
-		</script>
-
 		{% else %}
 		<md-block> {{ques.in_format}} </md-block>
-		<script type="module" src="https://md-block.verou.me/md-block.js"></script>
 		{% endif %}
 
 		<h3>Output</h3>
 		<hr />
 		{% if ques.type_name == 1 %}
 		<p>{{ques.out_format}}</p>
-
 		{% elif ques.type_name == 2 %}
 		<p id="jinbei"></p>
-		<script>
-			var text = "{{ques.out_format|escapejs|safe}}"; // Your HTML string
-			document.getElementById("jinbei").innerHTML = text;
-		</script>
-
 		{% else %}
 		<md-block> {{ques.out_format}} </md-block>
-		<script type="module" src="https://md-block.verou.me/md-block.js"></script>
-
 		{% endif %}
 
 		<br />
@@ -190,16 +180,34 @@
 			</div>
 			<div class="card-body">
 				<div style="display: inline; float: left">
-					<h5 class="card-title">Input</h5>
-					<pre>{{test.inputs}}</pre>
+					<h5 class="card-title">
+						Input
+						<button
+							class="btn btn-outline-info btn-sm"
+							style="margin-left: 15px"
+							onclick="inp()">
+							Copy Input
+						</button>
+					</h5>
+					<pre id="input_base_case">{{test.inputs}}</pre>
 				</div>
 
-				<div style="display: inline; float: right; margin-right: 20px">
-					<h5 class="card-title">Output</h5>
-					<pre>{{test.outputs}}</pre>
+				<div style="display: inline; float: right">
+					<h5 class="card-title">
+						Output
+						<button
+							class="btn btn-outline-info btn-sm"
+							style="margin-left: 15px"
+							onclick="out()">
+							Copy Output
+						</button>
+					</h5>
+					<pre id="output_base_case">{{test.outputs}}</pre>
 				</div>
 			</div>
 		</div>
+
+		<!-- ***************** Question description ends ********************* -->
 	</div>
 </div>
 
@@ -225,14 +233,16 @@
 			</div>
 
 			<div class="modal-body">
-				Are you sure? Do you really want to delete the problem - 
+				Are you sure? Do you really want to delete the problem -
 				<strong>"{{ques.name}}" ?</strong>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">
 					Close
 				</button>
-				<a role="button" href="/ques/delete/{{ques.id}}" class="btn btn-primary">Yes</a>
+				<a role="button" href="/ques/delete/{{ques.id}}" class="btn btn-primary"
+					>Yes</a
+				>
 			</div>
 		</div>
 	</div>
@@ -240,4 +250,40 @@
 
 <!-- End of Modal for delete and update -->
 
+<!-- Scripts used -->
+
+{% if ques.type_name == 3 %}
+<script type="module" src="https://md-block.verou.me/md-block.js"></script>
+{% elif ques.type_name == 2 %}
+<script>
+	var text = "{{ques.description|escapejs|safe}}"; // Your HTML string
+	document.getElementById("ussopp").innerHTML = text;
+</script>
+
+<script>
+	var text = "{{ques.out_format|escapejs|safe}}"; // Your HTML string
+	document.getElementById("jinbei").innerHTML = text;
+</script>
+
+<script>
+	var text = "{{ques.in_format|escapejs|safe}}"; // Your HTML string
+	document.getElementById("chopper").innerHTML = text;
+</script>
+{% endif %}
+
+<script>
+	function inp() {
+		// Convert pre tag to html first
+		var html = $("#input_base_case").html();
+		navigator.clipboard.writeText(html);
+	}
+	
+	function out() {
+		// Convert pre tag to html first
+		var html = $("#output_base_case").html();
+		navigator.clipboard.writeText(html);
+	}
+</script>
+
+<!-- End of Scripts used -->
 {% endblock %}

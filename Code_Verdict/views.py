@@ -185,7 +185,7 @@ def custom(request):
                     )
             except subprocess.TimeoutExpired:
                 # Check if the subprocess is still running after 1 second
-                messages.warning(request, 'ERROR : TLE ! Time limit of 3 seconds !! ')
+                messages.warning(request, 'ERROR : TLE ! Time limit of 1 second !! ')
                 return redirect('/custom')
         
         if run_result.returncode:

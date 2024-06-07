@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
+from Authentication.models import detail
 
 def unauthenticated_user(view_func):
     def zoro(request, *args, **kwargs):
@@ -18,7 +19,8 @@ def allowed_users(allowed_roles = []):
 
 # For the time being considering that one user belongs to one group only
                 grp = request.user.groups.all()[0].name
-                if grp in allowed_roles:
+                employee = detail.objects.get(username = request.user.username)
+                if (grp in allowed_roles) and employee.approved:
                     return view_func(request, *args, **kwargs)
                 else:
                     messages.info(request, "You cannot access this page ! You are not an Employee !")

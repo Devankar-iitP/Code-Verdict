@@ -21,6 +21,7 @@ def update(request, ques_id):
         out_format = request.POST['out_format']
         type_name = request.POST['type_name']
 
+# ****************** Checking anamolies and updating question *************
         if len(description) < 10 :
             messages.warning(request, 'Description cannot be less than 10 characters !')
             return redirect("/ques")
@@ -39,6 +40,7 @@ def update(request, ques_id):
         ques.out_format = out_format
         ques.type_name = type_name
         ques.save()
+# ****************** End of Checking anamolies and updating question *************
 
         messages.success(request, "Problem updated successfully ^_^ ")
         return redirect(f'/dash/{ques.pk}')
@@ -55,6 +57,7 @@ def ques(request):
         out_format = request.POST['out_format']
         type_name = request.POST['type_name']
 
+# ****************** Checking anamolies and creating question *************
         if len(name) < 1 :
             messages.warning(request, 'Problem name cannot be empty !')
             return redirect("/ques")
@@ -77,6 +80,7 @@ def ques(request):
         
         user = question(name= name ,difficulty= difficulty ,description= description, in_format= in_format, out_format= out_format, type_name = type_name)
         user.save()
+# ****************** End of Checking anamolies and creating question *************
 
         dict={
             'title' : 'Create Testcase',
@@ -107,6 +111,7 @@ def test(request):
             'id_' : id_
         }
 
+# ****************** Checking anamolies and creating testcase *************
         if len(in_format) < 1 :
             messages.warning(request, 'Input cannot be empty !')
             if id_ != '-1':
@@ -140,6 +145,7 @@ def test(request):
         
         user = testcase(question = ques, inputs= in_format, outputs= out_format)
         user.save()
+# ****************** End of Checking anamolies and creating testcase *************
 
         dict1['id_'] = id_
         

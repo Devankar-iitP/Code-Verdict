@@ -144,20 +144,19 @@
 				lineNumbers.innerHTML = lines;
 			}
 
-			// copy code from textarea to code block
+			// layer of textarea is above code block of same size
+			// copying code from textarea to code block
 			function updateCode() {
 				let content = textarea1.value;
 
-				// encode the special characters
+				// encoding special characters for c++ mainly
 				content = content.replace(/&/g, "&amp;");
 				content = content.replace(/</g, "&lt;");
 				content = content.replace(/>/g, "&gt;");
-
-				// fill the encoded text to the code
 				codeBlock.innerHTML = content;
 				updateLineNumbers();
 
-				// highlight syntax using Highlight JS
+				// using Highlight JS library to highlight syntax
 				document.querySelectorAll("pre code").forEach((el) => {
 					hljs.highlightElement(el);
 				});
@@ -167,7 +166,7 @@
 			window.addEventListener("load", updateCode);
 			window.addEventListener("pageshow", updateCode);
 
-			// update changes in the textarea
+			// update changes in textarea only when changes in input happen
 			textarea1.addEventListener("input", () => {
 				updateCode();
 			});
@@ -181,27 +180,27 @@
 
 			// applying shortcut keys
 			textarea1.addEventListener("keydown", function (e) {
-				// [Enter] key pressed detected
+
+				// [Enter] key pressed
 				if (e.key === "Enter") {
 					// Prevent the default behavior (new line)
 					e.preventDefault();
 
 					var cursorPos = textarea1.selectionStart;
 
-					// Get the previous line
-					var prevLine = textarea1.value
+					// Get the current line where cursor is
+					var currLine = textarea1.value
 						.substring(0, cursorPos)
 						.split("\n")
 						.slice(-1)[0];
 
-					// Get the indentation of previous line using RegExp
+					// Get the indentation of current line using RegExp
 					// ^ - start of a line
 					// * - the rest of the line
 					//  \s matches whitespace character
-					var indent = prevLine.match(/^\s*/)[0];
+					var indent = currLine.match(/^\s*/)[0];
 
-					// Add a new line with the same indentation
-					// Shifts cursor to end
+					// Add a new line with the same indentation and moves cursor to end
 					textarea1.setRangeText("\n" + indent, cursorPos, cursorPos, "end");
 					updateCode();
 					return;

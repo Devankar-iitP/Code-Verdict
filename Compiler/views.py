@@ -118,9 +118,14 @@ def run(request, ques_id, code, language):
         )
 
         if compile_result.returncode:
-            messages.warning(request, 'Compilation ERROR !')
-            messages.warning(request, f'{compile_result.stderr}')
-            return 0
+            if 'run' in request.POST:
+                messages.warning(request, 'Compilation ERROR !')
+                messages.warning(request, f'{compile_result.stderr}')  
+                return 0 
+            else:
+                messages.warning(request, 'Runtime ERROR !')
+                messages.warning(request, f'{compile_result.stderr}')   
+                return 4
 
         if 'run' in request.POST:
             messages.success(request, f'Compiled SUCCESSFULLY {request.user.username} ^_^')
@@ -167,13 +172,18 @@ def run(request, ques_id, code, language):
                     )
             except subprocess.TimeoutExpired:
                 # Check if the subprocess is still running after 1 second
-                messages.warning(request, 'ERROR : TLE ! Time limit of 3 seconds !! ')
+                messages.warning(request, 'ERROR : TLE ! Time limit of 1 second !! ')
                 return 3
 
             if run_result.returncode:
-                messages.warning(request, 'Compilation ERROR !')
-                messages.warning(request, f'{run_result.stderr}')
-                return 0
+                if 'run' in request.POST:
+                    messages.warning(request, 'Compilation ERROR !')
+                    messages.warning(request, f'{run_result.stderr}')
+                    return 0 
+                else:
+                    messages.warning(request, 'Runtime ERROR !')
+                    messages.warning(request, f'{run_result.stderr}')
+                    return 4
             
             if 'run' in request.POST:
                 messages.success(request, f'Compiled SUCCESSFULLY {request.user.username} ^_^')
@@ -199,7 +209,7 @@ def run(request, ques_id, code, language):
 
         if len(minato) != len(kakashi):
             messages.warning(request, 'Output generated must have same format as described !')
-            return 0
+            return 2
 
         for tmp in range(len(minato)):
             kakashi[tmp] = kakashi[tmp].strip() 
