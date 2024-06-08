@@ -1,4 +1,3 @@
-db.sqlite3
 migrations
 __pycache__
 inputs
@@ -6,3 +5,4 @@ outputs
 codes
 data.json
 keys
+data
