@@ -34,17 +34,30 @@
 						style="width: 80%; margin-left: 0%" />
 				</div>
 
-				<div class="form-group col-md-6" >
-					<span class="detail" style="padding-left: 14px;">Difficulty</span>
+				<div class="form-group col-md-3">
+					<span class="detail" style="padding-left: 14px">Difficulty</span>
 					<select
 						name="difficulty"
 						class="form-select"
 						aria-label="Default select example"
-						style="padding: 5px 10px 5px 10px; border-radius: 5em"
-						required>
-						<option value="1">Easy</option>
+						style="padding: 5px 10px 5px 10px; border-radius: 5em">
+						<option value="1" selected>Easy</option>
 						<option value="2">Medium</option>
 						<option value="3">Hard</option>
+					</select>
+				</div>
+
+				<div class="form-group col-md-3">
+					<span class="detail" style="padding-left: 14px">Type of file</span>
+					<select
+						name="type_name"
+						class="form-select"
+						aria-label="Default select example"
+						style="padding: 5px 10px 5px 10px; border-radius: 5em"
+						required>
+						<option value="1">Plain text</option>
+						<option value="2">HTML</option>
+						<option value="3">Markdown</option>
 					</select>
 				</div>
 			</div>
@@ -73,80 +86,24 @@ Input supports HTML & Markdown also."></textarea>
 				placeholder="You can expand the area from bottom-right corner of this box. 
 Input supports HTML & Markdown also."></textarea>
 		</div>
+		
+		<button
+			type="submit"
+			name="test"
+			class="btn btn-success"
+			style="margin-left: 20%; width: 300px; margin-top: 3%">
+			Save and Create Testcases
+		</button>
+
+		<button
+			type="submit"
+			name="ques"
+			class="btn btn-primary"
+			style="float: right; margin-right: 15%; width: 300px; margin-top: 3%">
+			Only save Problem
+		</button>
+
 	</form>
-
-	<button
-		data-toggle="modal"
-		data-target="#ques_Modal"
-		name="test"
-		class="btn btn-success"
-		style="margin-left: 20%; width: 300px; margin-top: 3%">
-		Save and Create Testcases
-	</button>
-
-	<button
-		data-toggle="modal"
-		data-target="#ques_Modal"
-		name="ques"
-		class="btn btn-primary"
-		style="float: right; margin-right: 15%; width: 300px; margin-top: 3%">
-		Only save Problem
-	</button>
-
-	<div
-		class="modal fade"
-		id="ques_Modal"
-		tabindex="-1"
-		role="dialog"
-		aria-labelledby="ques_Label"
-		aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="ques_Label">Please select any</h5>
-					<button
-						type="button"
-						class="close"
-						data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-
-				<div class="modal-body">
-					<span class="detail">Type of file</span>
-					<span style="margin-right: 5px">Plain text </span>
-					<input
-						form="ques_form"
-						type="radio"
-						name="type_name"
-						style="margin-right: 20%"
-						value="1"
-						checked />
-
-					<span style="margin-right: 5px">HTML </span>
-					<input
-						form="ques_form"
-						type="radio"
-						name="type_name"
-						value="2"
-						style="margin-right: 20%" />
-
-					<span style="margin-right: 5px">Markdown </span>
-					<input type="radio" form="ques_form" name="type_name" value="3" />
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">
-						Close
-					</button>
-
-					<button type="submit" form="ques_form" class="btn btn-success">
-						Submit
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>
 
 {% endblock %}
