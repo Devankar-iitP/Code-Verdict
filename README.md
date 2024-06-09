@@ -65,23 +65,29 @@ Well, I will be dicussing mainly 2 ways on how to use this online judge on your 
     ```bash
       git clone https://github.com/Devankar-iitP/Code_Verdict.git
     ```
+    
 - Great, now let's get inside the Code_Verdict folder in your current directory
   ```bash
       cd code_Verdict
   ```
+  
 - Install all the requirements needed. Don't worry, it's quite simple  ^_^
   ```python
     pip install -r requirements.txt
   ```
+  
 - Let's create our docker container now...
   ```docker
     docker-compose up -d
   ```
-- After complete download, head over to the Docker Desktop application inside your local machine
+  
+- After the download is completed, head over to the Docker Desktop application inside your local machine
   - Press Windows key and type **"Docker Desktop"** in search bar to open
+ 
 - You will observe something like this inside the app
   ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/6e0a4008-5b16-479b-b41d-753d5bd02aae)
   In Images section, you will observe there are 2 images created named postgres which is our database and code_verdict-web which contains whole django app.
+
   
   - If your container appears to be orange like below
     ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/b089a09d-d491-4808-85bc-26c3b15c8e0e)
@@ -98,12 +104,16 @@ Well, I will be dicussing mainly 2 ways on how to use this online judge on your 
       ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/049acf5f-a7e3-4dbc-b091-5cd0c6a5c0a3)
       If not, then again perform these debugging instructions from start at an interval of 10 seconds
 
+
 - If your container is green then you are good to go now.
 - ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/23b0db91-0872-4071-98af-5fbeb39f53bb)
 - Click on highlighted link
 - Congratulations !! Now, you are part of Code_Verdict team.
   HAPPY CODING 😀
 
+## Using EC2 instance on AWS
+***Pre-requisites***
+**Frankly speaking, you have to only click on the below link**
 
-
+### Note - Since, I am a student and using free-tier on AWS account. This link only works if my instance is running on AWS. So, be careful !!
 
