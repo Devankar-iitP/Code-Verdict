@@ -111,9 +111,10 @@ Well, I will be dicussing mainly 2 ways on how to use this online judge on your 
 - Congratulations !! Now, you are part of Code_Verdict team.
   HAPPY CODING 😀
 
+<br>
+
 ## Using EC2 instance on AWS
-***Pre-requisites***
-**Frankly speaking, you have to only click on the below link**
 
-### Note - Since, I am a student and using free-tier on AWS account. This link only works if my instance is running on AWS. So, be careful !!
+***Pre-requisites*** - Frankly speaking, you have to only click on the below link
 
+***Note - Since, I am a student and using free-tier on AWS account. This link only works if my instance is running on AWS. So, be careful !!***
