@@ -22,6 +22,7 @@ Here is the basic difference between them :
 > It is a tool that allows users to write, compile, and execute code online without any local compiler in their system. It is mainly used for quick code testing, debugging, and experimentation.
 > Here, no verdict is passed by the system, rather only output is generated. Also, providing Input may or may not be necessary.
 >> Example - OnlineGDB, Programiz
+<br>
 
 ## ✨ Key Features
 - Multi-language support: `C++` `Java` `Python` `C-Programming`
@@ -39,6 +40,70 @@ Here is the basic difference between them :
 - Shortcut keys support - `Tab` `Shift + Tab` `Enter`
 - Security with custom compiler and Docker for isolation
 
-___
+<br>
 
-## How to start 
+# How to start using Code-Verdict 🤔
+Well, I will be dicussing mainly 2 ways on how to use this online judge on your local machine.
+
+
+## Using Docker
+***Pre-requisites***
+<ol>
+  <li>Docker account with Docker Desktop in local machine</li>
+  <li>VS Code or any code-editor</li>
+</ol>
+
+***Steps To Follow***
+- Firstly, **Clone** this repository to your local machine.
+  - Open a folder (recommended to create a new folder) in VS Code
+  - Now, let's create a virtual environment inside this folder
+      ```python
+        python -m venv myenv
+      ```
+    Replace **'myenv'** with any desired name you want
+  - Now, run this command inside your terminal:
+    ```bash
+      git clone https://github.com/Devankar-iitP/Code_Verdict.git
+    ```
+- Great, now let's get inside the Code_Verdict folder in your current directory
+  ```bash
+      cd code_Verdict
+  ```
+- Install all the requirements needed. Don't worry, it's quite simple  ^_^
+  ```python
+    pip install -r requirements.txt
+  ```
+- Let's create our docker container now...
+  ```docker
+    docker-compose up -d
+  ```
+- After complete download, head over to the Docker Desktop application inside your local machine
+  - Press Windows key and type **"Docker Desktop"** in search bar to open
+- You will observe something like this inside the app
+  ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/6e0a4008-5b16-479b-b41d-753d5bd02aae)
+  In Images section, you will observe there are 2 images created named postgres which is our database and code_verdict-web which contains whole django app.
+  
+  - If your container appears to be orange like below
+    ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/b089a09d-d491-4808-85bc-26c3b15c8e0e)
+    
+    Follow the instructions mentioned below step-wise :
+    - Click on "code_verdict" written near the orange icon
+    - Stop both the containers using ■ icon on right. After stopping, both should look like below :
+      ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/d32068c4-ccee-458a-9833-06a57ece3c59)
+    - Now, start only the postgres_db using ▶ icon on right
+      ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/dd61cdf7-5ee5-4e11-b460-a5d697415bc2)
+    - When you see the following line in logs section : "database system is ready to accept connections", now your database is ready.
+    - Start the django_container using ▶ icon on right
+    - If you get same message as below, then your containers are in sync and working
+      ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/049acf5f-a7e3-4dbc-b091-5cd0c6a5c0a3)
+      If not, then again perform these debugging instructions from start at an interval of 10 seconds
+
+- If your container is green then you are good to go now.
+- ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/23b0db91-0872-4071-98af-5fbeb39f53bb)
+- Click on highlighted link
+- Congratulations !! Now, you are part of Code_Verdict team.
+  HAPPY CODING 😀
+
+
+
+
