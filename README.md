@@ -113,6 +113,18 @@ Well, I will be dicussing mainly 2 ways on how to use this online judge on your 
 
 <br>
 
+***Key Notes***
+- Admin is already created with username = "root" & password = "admin"
+  - If you want your own custom superuser
+    ```python
+    python manage.py create superuser
+    ```
+    Set the username & password accordingly
+- All data is stored in data folder
+- If you want to be employee, then give permission from admin for approval
+- ***This system is NOT connected to main SERVER. It's like a virtual playground for your own experiments.***
+    
+
 ## Using EC2 instance on AWS
 
 ***Pre-requisites*** - Frankly speaking, you have to only click on the below link
