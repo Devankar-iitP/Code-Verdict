@@ -1,12 +1,14 @@
-# Overview
+# CODE VERDICT - an Online Judge
 
-*From the very first year, when I embarked on my journey in Competitive Programming (CP), I came across many remarkable platforms like CodeForces and Codechef. I always wondered about the internal working of those platforms.
+*From the very first year, when I embarked on my journey in Competitive Programming (CP), I came across many remarkable platforms like CodeForces and Codechef. I always wondered about the internal working of those platforms. 
 Although, the primary objective is not to entirely replicate all the features but to create a product that delivers value to the user through a judicious selection of essential features. It is a go-to-use product in software domain as I look from my perspective.*
 
 So here, I present Code Verdict, an Online Judge using Django from scratch. Django being a high-level, open-source web framework in Python, is simple and easy to learn. It has a built-in admin panel and authorization system. It follows the ***Don’t Repeat Yourself (DRY)*** principle, hence reducing redundancy. 
 I tried my best to follow DRY principle. It is commonly used by many famous companies such as ***Instagram, Youtube and Spotify***. 
 
 The final product aims to allow users to submit their code in multiple programming languages, execute it and generate a verdict in real-time environment. The system will be constructed with a focus on ensuring robust security and scalability.
+
+<img src="https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/47a48902-a934-4d71-af8f-fb20c1c60364" width="100" height="100">
 
 **LET'S  DIG  IN  WITHOUT  FURTHER  ADO !!**
 ___
@@ -95,7 +97,7 @@ Well, I will be dicussing mainly 2 ways on how to use this online judge on your 
     Follow the instructions mentioned below step-wise :
     - Click on "code_verdict" written near the orange icon
     - Stop both the containers using ■ icon on right. After stopping, both should look like below :
-      ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/d32068c4-ccee-458a-9833-06a57ece3c59)
+      <img src="https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/d32068c4-ccee-458a-9833-06a57ece3c59" width="300" height="200">
     - Now, start only the postgres_db using ▶ icon on right
       ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/dd61cdf7-5ee5-4e11-b460-a5d697415bc2)
     - When you see the following line in logs section : "database system is ready to accept connections", now your database is ready.
@@ -106,7 +108,7 @@ Well, I will be dicussing mainly 2 ways on how to use this online judge on your 
 
 
 - If your container is green then you are good to go now.
-- ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/23b0db91-0872-4071-98af-5fbeb39f53bb)
+- <img src="https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/23b0db91-0872-4071-98af-5fbeb39f53bb" width="300" height="200">
 - Click on highlighted link
 - Congratulations !! Now, you are part of Code_Verdict team.
   HAPPY CODING 😀
@@ -123,10 +125,44 @@ Well, I will be dicussing mainly 2 ways on how to use this online judge on your 
 - All data is stored in data folder
 - If you want to be employee, then give permission from admin for approval
 - ***This system is NOT connected to main SERVER. It's like a virtual playground for your own experiments.***
-    
+
+<br>
 
 ## Using EC2 instance on AWS
 
 ***Pre-requisites*** - Frankly speaking, you have to only click on the below link
 
 ***Note - Since, I am a student and using free-tier on AWS account. This link only works if my instance is running on AWS. So, be careful !!***
+
+<br>
+
+## Contributions
+We welcome anyone who wants to make contributions from the community to enhance this Online Judge Platform. If you have ideas for new features, improvements, or bug fixes, follow these steps to contribute :
+
+1. Fork the Repository: Click the 'Fork' button at the top right of this repository to create your own copy.
+2. Clone the Forked Repository: Clone your forked repository to your local machine using
+```git
+  git clone https://github.com/Devankar-iitP/Code_Verdict.git
+```
+3. Now, create a new branch for development
+```git
+git checkout -b branch_name
+```
+4. Implement your changes in the codebase, whatever you think fits the best.
+5. Commit your changes with a clear commit message
+```git
+git commit -m "Add feature: your feature name"
+```
+6. Push your changes to your forked repository
+```git
+ git push origin feature/your-feature-name
+```
+7. Open a pull request to the main repository with a description of your changes. Make sure to follow the pull request template provided
+
+#### Before contributing, please ensure that your changes follow the project's coding standards and guidelines.
+#### Thank you for your interest in contributing to Code Verdict ! 
+
+<br>
+
+## LICENSE
+This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
