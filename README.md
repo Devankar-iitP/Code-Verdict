@@ -60,27 +60,27 @@ Well, I will be dicussing mainly 2 ways on how to use this online judge on your 
   - Open a folder (recommended to create a new folder) in VS Code
   - Now, let's create a virtual environment inside this folder
       ```python
-        python -m venv myenv
+      python -m venv myenv
       ```
     Replace **'myenv'** with any desired name you want
   - Now, run this command inside your terminal:
     ```bash
-      git clone https://github.com/Devankar-iitP/Code_Verdict.git
+    git clone https://github.com/Devankar-iitP/Code_Verdict.git
     ```
     
 - Great, now let's get inside the Code_Verdict folder in your current directory
   ```bash
-      cd code_Verdict
+  cd code_Verdict
   ```
   
 - Install all the requirements needed. Don't worry, it's quite simple  ^_^
   ```python
-    pip install -r requirements.txt
+  pip install -r requirements.txt
   ```
   
 - Let's create our docker container now...
   ```docker
-    docker-compose up -d
+  docker-compose up -d
   ```
   
 - After the download is completed, head over to the Docker Desktop application inside your local machine
@@ -142,22 +142,31 @@ We welcome anyone who wants to make contributions from the community to enhance 
 1. Fork the Repository: Click the 'Fork' button at the top right of this repository to create your own copy.
 2. Clone the Forked Repository: Clone your forked repository to your local machine using
 ```git
-  git clone https://github.com/Devankar-iitP/Code_Verdict.git
+git clone https://github.com/Devankar-iitP/Code_Verdict.git
 ```
 3. Now, create a new branch for development
 ```git
 git checkout -b branch_name
 ```
 4. Implement your changes in the codebase, whatever you think fits the best.
-5. Commit your changes with a clear commit message
+5. Stage those changes
+```git
+git add .
+``` 
+6. Commit your changes with a clear commit message
 ```git
 git commit -m "Add feature: your feature name"
 ```
-6. Push your changes to your forked repository
+7. Push the changes to your forked repository
 ```git
- git push origin feature/your-feature-name
+git push origin feature/your-feature-name
 ```
-7. Open a pull request to the main repository with a description of your changes. Make sure to follow the pull request template provided
+8. Finally, make a pull request
+   - Head on over to the repository on GitHub where your project lives `https://github.com/<your_username>/Code_Verdict`
+   - You'll see a banner indicating that your branch is one commit ahead of main.
+   - Click on Contribute and then Open a pull request.
+   - Click Create pull request.
+   - Enter the title and description of your changes.
 
 #### Before contributing, please ensure that your changes follow the project's coding standards and guidelines.
 #### Thank you for your interest in contributing to Code Verdict ! 
