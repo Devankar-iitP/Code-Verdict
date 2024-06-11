@@ -40,6 +40,7 @@ Here is the basic difference between them :
 - Code-editor supports both HTML and Markdown language
 - Support syntax highlighting and line numbers
 - Shortcut keys support - `Tab` `Shift + Tab` `Enter`
+- Leaderboard to see your global standings
 - Security with custom compiler and Docker for isolation
 
 <br>
