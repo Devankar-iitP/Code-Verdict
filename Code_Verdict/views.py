@@ -56,9 +56,40 @@ def ques(request, ques_id):
     return render(request,'dynamic_files/main.html', dict)
 
 @unauthenticated_user
-def profile(request):
-    user = User.objects.get(username=request.user.username)
-    brief = detail.objects.get(username = request.user.username)
+def leaderboard(request):
+    user1 = detail.objects.get(username=request.user.username)
+    stats = []
+    for person in User.objects.all():
+        stats_temporary = []
+        stats_temporary.append(person.username)
+        accepted = 0
+        for solved in info.objects.filter(user=person):
+            if solved.status == 1:
+                accepted += 1
+
+        stats_temporary.append(accepted)   
+        stats.append(stats_temporary)
+
+    stats.sort(key=lambda x: x[1], reverse=True)
+    rank = 1
+    for person in stats:
+        if person[0] == user1.username:
+            break
+        rank += 1
+
+    dict = {
+        'title' : 'Leaderboard',
+        'user' : user1,
+        'stats' : stats,
+        'rank' : rank
+    }
+   
+    return render(request, 'dynamic_files/leaderboard.html', dict)
+
+@unauthenticated_user
+def profile(request, username):
+    user = User.objects.get(username=username)
+    brief = detail.objects.get(username = username)
     data = info.objects.filter(user = user).order_by('-time')
 
     a = b = c = d = streak = tmp = 0

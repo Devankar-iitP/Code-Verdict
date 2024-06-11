@@ -1,0 +1,110 @@
+{% extends 'dynamic_files/base.html' %} {% block body %}
+<span></span>
+{% include "dynamic_files/navbar.html" %}
+<span></span>
+{% include "dynamic_files/alert.html" %}
+
+<div
+	style="
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background-image: url('/static/Images/profile-bg.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+	">
+	<div style="margin: 20px 30px 0px 30px">
+		<div class="card" style="float: left; width: 300px">
+			<div class="card-body align-items-center text-center">
+				{% if user.gender == 1 %}
+				<img
+					src="/static/Images/profile_b.jpg"
+					class="rounded-circle"
+					width="250" />
+				{% else %}
+				<img
+					src="/static/Images/profile_g.jpg"
+					class="rounded-circle"
+					width="250" />
+				{% endif %}
+
+				<div class="mt-3">
+					<h4>{{user.username}}</h4>
+					{% if request.user.groups.all.0.name == 'Employee' %}
+					<p
+						style="
+							font-style: italic;
+							font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+								'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+						">
+						Employee at Code Verdict
+					</p>
+					{% else %}
+					<p
+						style="
+							font-style: italic;
+							font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+								'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+						">
+						Student at Code Verdict
+					</p>
+					{% endif %}
+					<h5>
+						<span style="font-size: 30px">&#127881;</span> Rank - {{rank}}
+					</h5>
+				</div>
+			</div>
+		</div>
+
+		<div style="float: right; width: 75%">
+			<table class="table table-striped">
+				<thead
+					style="
+						color: black;
+						background-color: rgb(225, 222, 31);
+						font-family: Arial, Helvetica, sans-serif;
+						font-size: larger;
+					">
+					<tr>
+						<th>Rank</th>
+						<th>Name</th>
+						<th>Problems Solved</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{% for stat in stats %}
+					<tr>
+						<td>
+							<a
+								href="/dash/{{names.id}}"
+								style="text-decoration: none; color: rgb(74, 73, 73)">
+								{% if forloop.counter == 1 %}
+								<span style="font-size: xx-large"> &#129351;</span>
+								{% elif forloop.counter == 2 %}
+								<span style="font-size: xx-large"> &#129352;</span>
+								{% elif forloop.counter == 3 %}
+								<span style="font-size: xx-large">&#129353;</span>
+								{% else %}
+								<span style="margin-left: 20px">{{forloop.counter}}</span>
+								{% endif %}
+							</a>
+						</td>
+						{% for st in stat %}
+						<td style="font-weight: bold">
+							{% if forloop.counter == 1 %}
+							<a href="/profile/{{st}}" style="text-decoration: none">{{st}}</a>
+							{% else %}
+							<span style="margin-left: 10%">{{st}}</span>
+							{% endif %}
+						</td>
+						{% endfor %}
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

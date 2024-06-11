@@ -35,40 +35,8 @@ def main(request, ques_id, username):
     if status != 1:
         return redirect(f'/dash/{ques_id}')
 
-    brief = detail.objects.get(username = username)
-    data = info.objects.filter(user = user).order_by('-time')
-    
-    a = b = c = d = streak = tmp = 0
-    for submission in data:
-        if submission.status == '1':
-            tmp += 1
-        else:
-            streak = max(streak, tmp)
-            tmp=0
-
-        if submission.language == '1':
-            a+=1
-        elif submission.language == '2':
-            b+=1
-        elif submission.language == '3':
-            c+=1
-        else:
-            d+=1
-    streak = max(streak, tmp)
-
-    dict = {
-        'title' : 'Profile',
-        'user' : brief,
-        'info' : data,
-        'cpp' : (a/(a+b+c+d))*100 if a+b+c+d != 0 else 0,
-        'py' : (b/(a+b+c+d))*100 if a+b+c+d != 0 else 0,
-        'java' : (c/(a+b+c+d))*100 if a+b+c+d != 0 else 0,
-        'c' : (d/(a+b+c+d))*100 if a+b+c+d != 0 else 0,
-        'streak' : streak
-    }
-
     messages.success(request, f'Great {user.username} ! You solved it, practice more ^_^')
-    return render(request, 'dynamic_files/profile.html', dict)    
+    return redirect(f'/profile/{username}')  
 
 
 def run(request, ques_id, code, language):
