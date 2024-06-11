@@ -152,14 +152,14 @@ def run(request, ques_id, code, language):
                             stdin=input_file,
                             text = True,
                             capture_output=True,
-                            timeout=1
+                            timeout=2
                         )
                 elif language == '3':
                     run_result = subprocess.run(
                         ["java", code_path],
                         stdin = input_file, 
                         capture_output=True,
-                        timeout=1,
+                        timeout=2,
                         text = True
                     )
                 else:
@@ -168,11 +168,11 @@ def run(request, ques_id, code, language):
                         stdin=input_file,
                         text = True,
                         capture_output=True,
-                        timeout=1
+                        timeout=2
                     )
             except subprocess.TimeoutExpired:
-                # Check if the subprocess is still running after 1 second
-                messages.warning(request, 'ERROR : TLE ! Time limit of 1 second !! ')
+                # Check if the subprocess is still running after 2 seconds
+                messages.warning(request, 'ERROR : TLE ! Time limit of 2 seconds !! ')
                 return 3
 
             if run_result.returncode:
