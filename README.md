@@ -1,5 +1,5 @@
 # CODE VERDICT - an Online Judge
-
+### To check out Code Verdict, click on - <a href="https://code-verdict.me/">Code-Verdict</a>
 *From the very first year, when I embarked on my journey in Competitive Programming (CP), I came across many remarkable platforms like CodeForces and Codechef. I always wondered about the internal working of those platforms. 
 Although, the primary objective is not to entirely replicate all the features but to create a product that delivers value to the user through a judicious selection of essential features. It is a go-to-use product in software domain as I look from my perspective.*
 
