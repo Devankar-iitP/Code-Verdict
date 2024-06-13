@@ -133,6 +133,8 @@ Well, I will be dicussing mainly 2 ways on how to use this online judge on your 
 
 ***Pre-requisites*** - Frankly speaking, you have to only click on the below link
 
+<a href="https://code-verdict.me/">Code-Verdict</a>
+
 ***Note - Since, I am a student and using free-tier on AWS account. This link only works if my instance is running on AWS. So, be careful !!***
 
 <br>
