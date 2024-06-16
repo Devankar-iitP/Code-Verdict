@@ -1,5 +1,6 @@
 # CODE VERDICT - an Online Judge
 ### To check out Code Verdict, click on - <a href="https://code-verdict.me/">Code-Verdict</a>
+### For quick overview, click on - <a href="https://youtu.be/Ge1BIJ9gHHc">Project Demonstration</a>
 *From the very first year, when I embarked on my journey in Competitive Programming (CP), I came across many remarkable platforms like CodeForces and Codechef. I always wondered about the internal working of those platforms. 
 Although, the primary objective is not to entirely replicate all the features but to create a product that delivers value to the user through a judicious selection of essential features. It is a go-to-use product in software domain as I look from my perspective.*
 
@@ -33,15 +34,16 @@ Here is the basic difference between them :
 - Only ***Employee*** can perform CRUD operations after verification
 - Problem statements with difficulty assigned
 - Custom Input feature
-- Supports TLE and Runtime Error
+- Supports ***TLE*** and ***Runtime Error***
 - Can access past submissions in profile
 - Can copy submitted codes in past submissions
 - View common stats in profile section
-- Code-editor supports both HTML and Markdown language
+- Code-editor supports `HTML` and `Markdown language`
 - Support syntax highlighting and line numbers
 - Shortcut keys support - `Tab` `Shift + Tab` `Enter`
-- Leaderboard to see your global standings
+- Leaderboard to compare and see your standings globally
 - Security with custom compiler and Docker for isolation
+- HTTPS is used for enhanced security
 
 <br>
 
