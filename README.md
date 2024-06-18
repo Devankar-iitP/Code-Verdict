@@ -50,6 +50,14 @@ Here is the basic difference between them :
 # How to start using Code-Verdict 🤔
 Well, I will be dicussing mainly 2 ways on how to use this online judge on your local machine.
 
+## Using EC2 instance on AWS
+
+***Pre-requisites*** - Frankly speaking, you have to only click on the below link
+
+<a href="https://code-verdict.me/">Code-Verdict</a>
+
+***Note - Since, I am a student and using free-tier on AWS account. This link only works if my instance is running on AWS. So, be careful !!***
+<br>
 
 ## Using Docker
 ***Pre-requisites***
@@ -128,16 +136,6 @@ Well, I will be dicussing mainly 2 ways on how to use this online judge on your 
 - All data is stored in data folder
 - If you want to be employee, then give permission from admin for approval
 - ***This system is NOT connected to main SERVER. It's like a virtual playground for your own experiments.***
-
-<br>
-
-## Using EC2 instance on AWS
-
-***Pre-requisites*** - Frankly speaking, you have to only click on the below link
-
-<a href="https://code-verdict.me/">Code-Verdict</a>
-
-***Note - Since, I am a student and using free-tier on AWS account. This link only works if my instance is running on AWS. So, be careful !!***
 
 <br>
 
