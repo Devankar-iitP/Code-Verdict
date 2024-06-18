@@ -156,6 +156,7 @@
 			</div>
 
 			<div style="float: right; width: 75%">
+			{% if request.user.username in request.path %}
 				<div class="card">
 					<div class="card-body" style="margin-left: 0px">
 						<div class="row">
@@ -187,7 +188,8 @@
 						</div>
 					</div>
 				</div>
-
+			{% endif %}
+				
 				<br />
 				<div class="card h-100">
 					<div class="card-body" style="padding-left: 10px">
