@@ -12,20 +12,24 @@
 		background-image: url('/static/Images/profile-bg.png');
 		background-repeat: no-repeat;
 		background-size: cover;
+		max-width: 100%;
+		min-height: 725px;
+		height: auto;
+		width: auto\10;
 	">
 	<div style="margin: 20px 30px 0px 30px">
-		<div class="card" style="float: left; width: 300px">
+		<div class="card" style="float: left; width: 23%">
 			<div class="card-body align-items-center text-center">
 				{% if user.gender == 1 %}
 				<img
 					src="/static/Images/profile_b.jpg"
 					class="rounded-circle"
-					width="250" />
+					width="85%" />
 				{% else %}
 				<img
 					src="/static/Images/profile_g.jpg"
 					class="rounded-circle"
-					width="250" />
+					width="85%" />
 				{% endif %}
 
 				<div class="mt-3">
