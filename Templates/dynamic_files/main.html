@@ -11,8 +11,8 @@
 			action="/compile/{{ques.id}}/{{request.user.username}}/">
 			{% csrf_token %}
 
+			<!-- ***************** CRUD operations ********************* -->
 			<span>
-				<!-- ***************** CRUD operations ********************* -->
 				{% if request.user.groups.all.0.name == 'Employee' %}
 				<button
 					type="button"
@@ -32,11 +32,10 @@
 					<i class="bi bi-file-earmark-arrow-up"></i>
 					<strong>Update</strong>
 				</a>
+				{% else %}
+				<p style="display: inline; color: white">Easter egg !</p>
 				{% endif %}
 
-				<!-- ***************** End of CRUD operations ********************* -->
-
-				<!-- ***************** Code Editor starts ********************* -->
 				<select
 					name="language"
 					class="form-select"
@@ -53,8 +52,16 @@
 					<option value="4">C</option>
 				</select>
 			</span>
+			<!-- ***************** End of CRUD operations ********************* -->
 
-			<div id="divCodeWrapper" style="margin-top: 1%;">
+			<!-- ***************** Code Editor starts ********************* -->
+
+			{% if request.user.groups.all.0.name == 'Employee' %}
+			<div id="divCodeWrapper" style="margin-top: 1%">
+			{% else %}
+			<div id="divCodeWrapper" style="margin-top: 3%">
+			{% endif %}
+
 				<pre><code style="position: absolute; width: 100%; height: 100%;" class="lineNumbers"></code></pre>
 				<pre><code id="lineNumbers" style="opacity: 0.5;"></code></pre>
 				<pre
