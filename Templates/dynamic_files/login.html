@@ -7,18 +7,16 @@
 		{% csrf_token %}
 		<!-- CSRF token for security -->
 
-		<style media="all and (min-width: 800px)">
-			img {
-				margin-left: 35%;
-			}
-		</style>
-		
-		<style media="all and (min-width: 1200px)">
-			img {
-				margin-left: 40%;
-			}
-		</style>
-		<img src="/static/Images/img-01.png" />
+		<div
+                        style="
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 100vw;
+                                padding-left: 5%;
+                        ">
+                <img src="/static/Images/img-01.png" width="25%" height="25%">
+                </div>
 
 		<div class="main2">
 			{% include "dynamic_files/alert.html" %}
