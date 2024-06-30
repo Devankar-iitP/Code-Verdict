@@ -7,7 +7,18 @@
 		{% csrf_token %}
 		<!-- CSRF token for security -->
 
-		<img src="/static/Images/img-01.png" style="margin-left: 41%" />
+		<style media="all and (min-width: 800px)">
+			img {
+				margin-left: 35%;
+			}
+		</style>
+		
+		<style media="all and (min-width: 1200px)">
+			img {
+				margin-left: 40%;
+			}
+		</style>
+		<img src="/static/Images/img-01.png" />
 
 		<div class="main2">
 			{% include "dynamic_files/alert.html" %}
@@ -28,13 +39,15 @@
 				Don't have an account ?
 				<a href="/auth/registration/">Create your account</a>
 			</p>
-
-			<button
-				type="submit"
-				class="btn btn-outline-success"
-				style="margin-left: 42%; width: 100px; margin-top: 5%">
-				Login
-			</button>
+		</div>
+		<div
+			style="
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100vw;
+			">
+			<button type="submit" class="btn btn-outline-success" style="width: 100px;">Login</button>
 		</div>
 	</form>
 </div>
