@@ -107,9 +107,7 @@ Well, I will be dicussing mainly 2 ways on how to use this online judge on your 
     
     Follow the instructions mentioned below step-wise :
     - Click on "code_verdict" written near the orange icon
-    - Stop both the containers using ■ icon on right. After stopping, both should look like below :
-      <img src="https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/d32068c4-ccee-458a-9833-06a57ece3c59" width="300" height="200">
-    - Now, start only the postgres_db using ▶ icon on right
+    - Now, wait for 1-2 minutes until you see below message in terminal
       ![image](https://github.com/Devankar-iitP/Code_Verdict/assets/118092124/dd61cdf7-5ee5-4e11-b460-a5d697415bc2)
     - When you see the following line in logs section : "database system is ready to accept connections", now your database is ready.
     - Start the django_container using ▶ icon on right
